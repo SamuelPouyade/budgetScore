@@ -1,4 +1,3 @@
-import pandas as pd
 from parser import lire_transaction
 
 def total_par_categorie(df):
@@ -7,11 +6,19 @@ def total_par_categorie(df):
 
     return resume
 
-
 def total_entrees(df):
     entrees = df[df["Transaction_Type"] == "Credit"]
     total = entrees["Transaction_Amount"].sum()
     return total
+
+def total_depenses(df):
+    depenses = df[df["Transaction_Type"] == "Debit"]
+    total = depenses["Transaction_Amount"].sum()
+    return total
+
+def total_solde(df):
+    solde = df["Transaction_Amount"].sum()
+    return solde
 
 def bilan_mensuel(df):
     df = df.copy()
